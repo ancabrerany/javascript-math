@@ -6,7 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&family=REM:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/tablet.css" media="(min-width: 425px)">
+
     <title>Calculadora de Descuentos</title>
 </head>
 <body>
@@ -15,13 +17,23 @@
     </header>
     <main>
     <section>
-            <label>Ingresa el precio inicial: </label>
+            <label for="price">Ingresa el precio inicial: </label>
             <input type="number" class="price"> 
-            <label>Ingresa el descuento deseado: </label>
+            <label for="discount">Ingresa el descuento deseado: </label>
             <input type="number" class="discount"><br>
-            <button onclick="calcularDescuento()" class="buttonDiscount">Calcular Descuento</button>
+            <button class="buttonDiscount">Calcular</button>
 
             <span class="result inactive"></span>
+    </section>
+     <section>
+            <label>Descuentos por medio de un cupón</label>
+            <label for="priceCoupon">Ingresa el precio inicial: </label>
+            <input type="number" class="priceCoupon"> 
+            <label for="discountCoupon">Ingresa el cupón de descuento: </label>
+            <input type="text" class="discountCoupon"><br>
+            <button class="buttonCoupon">Calcular</button>
+
+            <span class="resultCoupon inactive"></span>
     </section>
     </main>
     <script src="./main.js"></script>
