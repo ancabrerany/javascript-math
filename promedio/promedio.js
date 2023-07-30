@@ -10,10 +10,16 @@ function calcularPromedio(lista){
 }
 //[1, 2, 3, 4]
 
-function esImparOPar (lista){
-    if (lista.length %2 == 0 ){
-        return "Par";
-    }else {
-        return "Impar"
+function esImpar (lista){
+    return lista.length % 2;
+}
+
+function calcularMediana (lista) {
+    const listaEsImpar = esImpar(lista);
+
+    if(listaEsImpar){
+        
+    } else {
+
     }
 }
