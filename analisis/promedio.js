@@ -1,27 +1,6 @@
-const textArea = document.querySelector('.price');
-const promedioBtn = document.querySelector('.btnPromedio');
-const mediaBtn = document.querySelector('.btnMedia');
-const modaBtn = document.querySelector('.btnModa');
-const span = document.querySelector('span');
-const result = document.querySelector('.result');
+const mathProject = {};
 
-
-
-promedioBtn.addEventListener('click',calcularPromedio);
-mediaBtn.addEventListener('click',calcularMediana);
-modaBtn.addEventListener('click',calcularModa);
-
-function getData (){
-    const text = textArea.value;
-    const stringArray = text.split(',');
-    const textArray = stringArray.map(function(item){
-        return parseInt(item);
-    });
-    return textArray;
-}
-
-function calcularPromedio(){
-    const lista = getData();
+mathProject.calcularPromedio = function(lista){
    /*  let result = 0;
     for(let item of listaNumeros){
         result+= item;
@@ -30,38 +9,28 @@ function calcularPromedio(){
     const result = lista.reduce((valorAcumulado, valorActual) => 
                 valorAcumulado + valorActual, 0);
 
-    const promedio =  (result/lista.length);
-    span.classList.remove("inactive");
-    span.innerHTML = "Promedio : " + promedio ;
-
-    return promedio;  
+    return (result/lista.length);
 }
 
-function esImpar(lista) {
+mathProject.esImpar = function(lista){
     return lista.length % 2;
 }
 
-function calcularMediana() {
-    const lista = getData();
+mathProject.calcularMediana = function(lista) {
     lista.sort(function(a, b){return a - b});
-    const listaEsImpar = esImpar(lista);
-    let mediana = 0;
+
+    const listaEsImpar = mathProject.esImpar(lista);
 
     if(listaEsImpar){
         const positionMediana = Math.floor(lista.length/2);
-        mediana = lista[positionMediana]
+        return lista[positionMediana];
     } else {
         const positionMediana = (lista.length/2);
-        mediana = (calcularPromedio([lista[positionMediana-1], lista[positionMediana]]));
+        return (mathProject.calcularPromedio([lista[positionMediana-1], lista[positionMediana]]));
     }
-
-    span.classList.remove("inactive");
-    span.innerHTML = "Mediana : " + mediana ;
-    return mediana;
 }
 
-function calcularModa() {
-    const lista = getData();
+mathProject.calcularModa = function(lista) {
     const listCount = {};
 
     for(let i = 0; i < lista.length; i ++) {
@@ -86,21 +55,14 @@ function calcularModa() {
     const listaOrdenada = sortArrayBidimensional(listArray, 1);
     const listaMaxNumber = listaOrdenada[0];
     const moda = listaMaxNumber[0];
-    
-
-    span.classList.remove("inactive");
-    span.innerHTML = "Moda : " + moda ;
-
     return moda;
     //console.log({listCount, listArray, listaOrdenada, listaMaxNumber});
 
     //console.log('La moda es: ' + listaMaxNumber[0]);
-
-    
 }
 
 
-function calcularMediaPonderada(){
+mathProject.calcularMediaPonderada = function(){
     let noteArray = [10, 8, 7];
     let creditArray = [2, 5, 5];
 
